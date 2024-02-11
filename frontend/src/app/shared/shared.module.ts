@@ -8,6 +8,4 @@ import { HeaderComponent } from "./components/header/header.component";
     exports: [HeaderComponent, FooterComponent]
 })
 
-export class SharedModule {
-
-}
+export class SharedModule {}
