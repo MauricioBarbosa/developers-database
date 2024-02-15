@@ -3,20 +3,23 @@
     <div class="mb-3 text-secondary">
         <i-bs name="file-person-fill" width="8rem" height="8rem"></i-bs>
     </div>
-    <form style="width: 30%;">
+    <form style="width: 30%;" #loginForm="ngForm">
         <div class="mb-3">
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="username">
+            <input type="text" class="form-control" [(ngModel)]="model.username" id="username" name="username" placeholder="username">
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
+            <input type="password" class="form-control" [(ngModel)]="model.password" name="password" id="password" placeholder="password">
         </div>
         <div class="w-100 d-flex justify-content-between">
             <div class="form-check mt-1">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Keep-me connected</label>
+                <input type="checkbox" class="form-check-input" [(ngModel)]="model.keepMeConnected" name="keepMeConnectedCheck" id="keepMeConnectedCheck">
+                <label class="form-check-label" for="keepMeConnectedCheck">Keep-me connected</label>
             </div>
             <button type="submit" class="btn btn-primary" style="background-color: var(--bs-purple); border: 0;">Login</button>
         </div>
     </form>
 </div>
+TODO: remove this: {{model.password}}
+TODO: remove this: {{model.username}}
+TODO: remove this: {{model.keepMeConnected}}
 <app-footer></app-footer>
