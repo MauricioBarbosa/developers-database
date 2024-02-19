@@ -1,14 +1,16 @@
 <app-header></app-header>
-<div class="d-flex flex-column align-items-center justify-content-center" style="flex: 1; height: 85vh;">
+<div *ngIf="!submitting else loading" class="d-flex flex-column align-items-center justify-content-center" style="flex: 1; height: 85vh;">
     <div class="mb-3 text-secondary">
         <i-bs name="file-person-fill" width="8rem" height="8rem"></i-bs>
     </div>
-    <form style="width: 30%;" #loginForm="ngForm">
+    <form style="width: 30%;" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
         <div class="mb-3">
-            <input type="text" class="form-control" [(ngModel)]="model.username" id="username" name="username" placeholder="username">
+            <input type="text" class="form-control" [(ngModel)]="model.username" id="username" name="username" placeholder="username" required>
+            <div  *ngIf="!usernameInformed" class="invalid-feedback" style="display: flex;">Please provide a username.</div>
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" [(ngModel)]="model.password" name="password" id="password" placeholder="password">
+            <input type="password" class="form-control" [(ngModel)]="model.password" name="password" id="password" placeholder="password" required>
+            <div *ngIf="!passwordInformed" class="invalid-feedback" style="display: flex;">Please provide a password.</div>
         </div>
         <div class="w-100 d-flex justify-content-between">
             <div class="form-check mt-1">
@@ -19,7 +21,9 @@
         </div>
     </form>
 </div>
-TODO: remove this: {{model.password}}
-TODO: remove this: {{model.username}}
-TODO: remove this: {{model.keepMeConnected}}
+<ng-template #loading>
+    <div class="d-flex flex-column align-items-center justify-content-center" style="flex: 1; height: 85vh;">
+        <app-loading></app-loading>
+    </div>
+</ng-template>
 <app-footer></app-footer>
