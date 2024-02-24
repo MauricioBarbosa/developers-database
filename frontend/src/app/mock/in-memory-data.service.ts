@@ -1,9 +1,13 @@
-import { Injectable } from "@angular/core";
-import { InMemoryDbService, RequestInfo } from "angular-in-memory-web-api";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import {
+  InMemoryDbService,
+  RequestInfo,
+} from 'angular-in-memory-web-api';
+import { Observable } from 'rxjs';
+import { TokenDto } from '../login/model/token.dto';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class InMemoryDataService extends InMemoryDbService {
   constructor() {
@@ -11,12 +15,20 @@ export class InMemoryDataService extends InMemoryDbService {
   }
 
   override createDb(
-    reqInfo?: RequestInfo | undefined,
+    reqInfo?: RequestInfo | undefined
   ): {} | Observable<{}> | Promise<{}> {
     const users = [
-      { id: 1, username: "some.user", password: "some.user.password" },
+      {
+        id: 1,
+        username: 'some.user',
+        password: 'some.user.password',
+      },
     ];
 
-    return { users };
+    const login: TokenDto = {
+      accessToken: 'some.access.token',
+    };
+
+    return { users, login };
   }
 }
