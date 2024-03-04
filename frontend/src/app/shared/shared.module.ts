@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { AlertComponent } from './application/components/alert/alert.component';
 import { FooterComponent } from './application/components/footer/footer.component';
 import { HeaderComponent } from './application/components/header/header.component';
 import { LoadingComponent } from './application/components/loading/loading.component';
@@ -7,23 +9,22 @@ import { HttpService } from './application/service/http/http.service';
 import { AngularHttpService } from './infrastructure/services/http/angular-http.http.service';
 
 @NgModule({
-  imports: [],
+  imports: [CommonModule],
   providers: [
-    { provide: HttpService, useValue: AngularHttpService },
+    { provide: HttpService, useClass: AngularHttpService },
+    AuthService,
   ],
   declarations: [
+    AlertComponent,
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
-    AuthService,
-    AngularHttpService,
   ],
   exports: [
-    AuthService,
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
-    AngularHttpService,
+    AlertComponent,
   ],
 })
 export class SharedModule {}

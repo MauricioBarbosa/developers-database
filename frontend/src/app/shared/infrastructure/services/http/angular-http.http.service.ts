@@ -32,18 +32,20 @@ export class AngularHttpService extends HttpService {
     );
   }
 
-  public override post(
+  public override post<T>(
     url: string,
     headers: HttpHeadersDto,
     body: HttpBodyDto
-  ): Observable<Result<null>> {
-    return this.httpClient.post(url, { headers }).pipe(
-      map(() => {
-        return Result.ok(null);
-      }),
-      catchError((error) => {
-        return of(Result.err(error));
-      })
-    );
+  ): Observable<Result<T>> {
+    return this.httpClient
+      .post(url, body, { headers })
+      .pipe(
+        map((response: T) => {
+          return Result.ok(response);
+        }),
+        catchError((error) => {
+          return of(Result.err(error));
+        })
+      );
   }
 }

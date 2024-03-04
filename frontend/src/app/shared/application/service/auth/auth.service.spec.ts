@@ -48,5 +48,19 @@ describe('Testing AuthService.authenticate method', () => {
         done();
       });
   });
-  it('should return a failed result when saving token on cache retrieves an error', () => {});
+
+  it('should return token', (done: DoneFn) => {
+    const error = new Error('someError');
+
+    httpServiceMock.post.and.returnValue(
+      of(Result.err(error))
+    );
+
+    authServiceMock
+      .authenticate(authenticationDto)
+      .subscribe((result: Result<any>) => {
+        expect(result.isErr).toBe(true);
+        done();
+      });
+  });
 });
