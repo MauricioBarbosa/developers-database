@@ -1,4 +1,10 @@
-import { Component, Injectable } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  ViewChild,
+} from '@angular/core';
+import { AlertComponent } from '../shared/application/components/alert/alert.component';
+import { AlertTypes } from '../shared/application/components/alert/enum/alert-types';
 import { AuthService } from '../shared/application/service/auth/auth.service';
 import { LoginRequestDto } from './model/login-request.dto';
 
@@ -10,6 +16,7 @@ import { LoginRequestDto } from './model/login-request.dto';
 })
 @Injectable()
 export class LoginComponent {
+  @ViewChild(AlertComponent) alertComponent: AlertComponent;
   public model: LoginRequestDto;
   public submitting: boolean;
   public usernameInformed: boolean;
@@ -49,9 +56,17 @@ export class LoginComponent {
       .authenticate(this.model)
       .subscribe((result) => {
         if (result.isErr) {
-          console.log('Ocorreu um erro');
+          this.alertComponent.show(
+            8,
+            AlertTypes.DANGER,
+            'An error has occured on authentication'
+          );
         } else {
-          console.log('Logado com sucesso');
+          this.alertComponent.show(
+            8,
+            AlertTypes.SUCCESS,
+            'Successfully logged'
+          );
         }
         this.submitting = false;
       });

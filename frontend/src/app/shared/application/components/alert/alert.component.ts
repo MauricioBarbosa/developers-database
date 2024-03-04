@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AlertTypes } from './enum/alert-types';
 
 @Component({
-  selector: 'app-alert',
+  selector: 'alert',
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.css',
 })
@@ -17,7 +17,11 @@ export class AlertComponent {
     this.alertType = null;
   }
 
-  show(seconds: number, alertType: AlertTypes, message) {
+  show(
+    seconds: number,
+    alertType: AlertTypes,
+    message: string
+  ) {
     this.showAlert = true;
     this.message = message;
     this.alertType = alertType;
