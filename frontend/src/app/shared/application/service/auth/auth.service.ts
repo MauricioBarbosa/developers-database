@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Result } from '@badrap/result';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
 import { TokenDto } from '../../../../login/model/token.dto';
 import { HttpService } from '../http/http.service';
 import { AuthenticationDto } from './dto/authentication.dto';
@@ -8,9 +9,11 @@ import { AuthenticationDto } from './dto/authentication.dto';
 @Injectable()
 export class AuthService {
   private accessToken: string;
+  private apiUrl: string;
 
   constructor(private readonly httpService: HttpService) {
     this.accessToken = '';
+    this.apiUrl = environment.apiUrl;
   }
 
   public authenticate(
@@ -18,7 +21,7 @@ export class AuthService {
   ): Observable<Result<null>> {
     return this.httpService
       .post<TokenDto>(
-        '/login',
+        `${this.apiUrl + '/login'}`,
         {},
         { ...authenticationDto }
       )
@@ -33,6 +36,10 @@ export class AuthService {
           return Result.ok(null);
         })
       );
+  }
+
+  public isAuthenticated(): boolean {
+    return !!this.accessToken;
   }
 
   private setToken(token: string) {

@@ -3,6 +3,7 @@ import {
   Injectable,
   ViewChild,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertComponent } from '../shared/application/components/alert/alert.component';
 import { AlertTypes } from '../shared/application/components/alert/enum/alert-types';
 import { AuthService } from '../shared/application/service/auth/auth.service';
@@ -23,7 +24,8 @@ export class LoginComponent {
   public passwordInformed: boolean;
 
   constructor(
-    private readonly authenticationService: AuthService
+    private readonly authenticationService: AuthService,
+    private readonly router: Router
   ) {
     this.model = new LoginRequestDto('', '', true);
     this.submitting = false;
@@ -67,6 +69,8 @@ export class LoginComponent {
             AlertTypes.SUCCESS,
             'Successfully logged'
           );
+
+          this.router.navigate(['/home']);
         }
         this.submitting = false;
       });

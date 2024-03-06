@@ -9,23 +9,17 @@ import {
   RouterOutlet,
   provideRouter,
 } from '@angular/router';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
+import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
-import { InMemoryDataService } from './mock/in-memory-data.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService,
-      {
-        dataEncapsulation: false,
-      }
-    ),
     LoginModule,
+    HomeModule,
     CommonModule,
     RouterOutlet,
   ],
