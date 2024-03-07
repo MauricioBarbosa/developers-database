@@ -6,7 +6,9 @@ import { TokenDto } from '../../../../login/model/token.dto';
 import { HttpService } from '../http/http.service';
 import { AuthenticationDto } from './dto/authentication.dto';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   private accessToken: string;
   private apiUrl: string;
@@ -39,7 +41,7 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    return !!this.accessToken;
+    return !this.accessToken;
   }
 
   private setToken(token: string) {
