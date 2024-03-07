@@ -1,0 +1,27 @@
+.alert-component{
+    margin: 0;
+    padding: 5;
+    display: block;
+    position: absolute;
+    top: 12%;
+    left: auto;
+    right: 2%;
+    width: 50%;
+    animation: moveToLeft 0.3s;
+    animation-timing-function: ease;
+}
+
+.alert-component.fade-out{
+    animation: moveToRight 0.3s;
+    animation-timing-function: ease;
+}
+
+@keyframes moveToLeft {
+    from {right: 0%;}
+    to {right: 2%;}
+}
+
+@keyframes moveToRight {
+    from {right: 2%;}
+    to {right: 0%;}
+}

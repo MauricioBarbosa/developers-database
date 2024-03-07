@@ -1,0 +1,10 @@
+{
+  "editor.fontSize": 12,
+  "terminal.integrated.fontSize": 9,
+  "mock-server.settings.paths": {
+    "root": "/home/mauricio/Documentos/Studies/Development/Projects/Developer-database/project/frontend/mock",
+    "db": "/home/mauricio/Documentos/Studies/Development/Projects/Developer-database/project/frontend/mock/db.json",
+    "static": "",
+    "snapshots": "./snapshots"
+  }
+}
