@@ -6,17 +6,9 @@
   style="flex: 1; height: 85vh"
 >
   <div class="mb-3 text-secondary">
-    <i-bs
-      name="file-person-fill"
-      width="8rem"
-      height="8rem"
-    ></i-bs>
+    <i-bs name="file-person-fill" width="8rem" height="8rem"></i-bs>
   </div>
-  <form
-    style="width: 30%"
-    #loginForm="ngForm"
-    (ngSubmit)="onSubmit(loginForm.value)"
-  >
+  <form style="width: 30%" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
     <div class="mb-3">
       <input
         type="text"
@@ -27,11 +19,7 @@
         placeholder="username"
         required
       />
-      <div
-        *ngIf="!usernameInformed"
-        class="invalid-feedback"
-        style="display: flex"
-      >
+      <div *ngIf="!usernameInformed" class="invalid-feedback" style="display: flex">
         Please provide a username.
       </div>
     </div>
@@ -45,11 +33,7 @@
         placeholder="password"
         required
       />
-      <div
-        *ngIf="!passwordInformed"
-        class="invalid-feedback"
-        style="display: flex"
-      >
+      <div *ngIf="!passwordInformed" class="invalid-feedback" style="display: flex">
         Please provide a password.
       </div>
     </div>
@@ -62,19 +46,12 @@
           name="keepMeConnectedCheck"
           id="keepMeConnectedCheck"
         />
-        <label
-          class="form-check-label"
-          for="keepMeConnectedCheck"
-          >Keep-me connected</label
-        >
+        <label class="form-check-label" for="keepMeConnectedCheck">Keep-me connected</label>
       </div>
       <button
         type="submit"
         class="btn btn-primary"
-        style="
-          background-color: var(--bs-purple);
-          border: 0;
-        "
+        style="background-color: var(--bs-purple); border: 0"
       >
         Login
       </button>
