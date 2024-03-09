@@ -1,41 +1,37 @@
-import { Component } from '@angular/core';
-import { AlertTypes } from './enum/alert-types';
+import { Component, Injectable } from "@angular/core";
+import { AlertDto } from "./dto/alert.dto";
+import { AlertService } from "./service/alert.service";
 
 @Component({
-  selector: 'alert',
-  templateUrl: './alert.component.html',
-  styleUrl: './alert.component.css',
+  selector: "alert",
+  templateUrl: "./alert.component.html",
+  styleUrl: "./alert.component.css",
 })
+@Injectable()
 export class AlertComponent {
-  message: string;
-  alertType: AlertTypes;
-  showAlert: boolean;
+  public alerts: AlertDto[];
+  public alertPositions: string[];
 
-  constructor() {
-    this.showAlert = false;
-    this.message = '';
-    this.alertType = null;
+  constructor(public readonly alertService: AlertService) {}
+
+  ngOnInit() {
+    this.alerts = this.alertService.getAlerts();
+
+    this.alertService.subscribeToAlertsObservable().subscribe((newAlerts) => {
+      this.alerts = newAlerts;
+
+      this.calculatePositions();
+    });
   }
 
-  show(
-    seconds: number,
-    alertType: AlertTypes,
-    message: string
-  ) {
-    this.showAlert = true;
-    this.message = message;
-    this.alertType = alertType;
+  private calculatePositions() {
+    let top = 20;
+    this.alertPositions = [];
 
-    setTimeout(() => {
-      this.showAlert = false;
-      this.message = '';
-      this.alertType = null;
-    }, this.convertSecondsToMiliSeconds(seconds));
-  }
+    this.alerts.map(() => {
+      this.alertPositions.push(`${top}px`);
 
-  private convertSecondsToMiliSeconds(
-    seconds: number
-  ): number {
-    return seconds * 1000;
+      top += top + 2;
+    });
   }
 }

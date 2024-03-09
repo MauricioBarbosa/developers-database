@@ -1,32 +1,26 @@
-import { Injectable } from '@angular/core';
-import { Result } from '@badrap/result';
-import { Observable, map } from 'rxjs';
-import { environment } from '../../../../../environments/environment';
-import { TokenDto } from '../../../../login/model/token.dto';
-import { HttpService } from '../http/http.service';
-import { AuthenticationDto } from './dto/authentication.dto';
+import { Injectable } from "@angular/core";
+import { Result } from "@badrap/result";
+import { Observable, map } from "rxjs";
+import { environment } from "../../../../../environments/environment";
+import { TokenDto } from "../../../../login/model/token.dto";
+import { HttpService } from "../http/http.service";
+import { AuthenticationDto } from "./dto/authentication.dto";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
   private accessToken: string;
   private apiUrl: string;
 
   constructor(private readonly httpService: HttpService) {
-    this.accessToken = '';
+    this.accessToken = "";
     this.apiUrl = environment.apiUrl;
   }
 
-  public authenticate(
-    authenticationDto: AuthenticationDto
-  ): Observable<Result<null>> {
+  public authenticate(authenticationDto: AuthenticationDto): Observable<Result<null>> {
     return this.httpService
-      .post<TokenDto>(
-        `${this.apiUrl + '/login'}`,
-        {},
-        { ...authenticationDto }
-      )
+      .post<TokenDto>(`${this.apiUrl + "/login"}`, {}, { ...authenticationDto })
       .pipe(
         map((result) => {
           if (result.isErr) {
@@ -36,12 +30,12 @@ export class AuthService {
           this.setToken(result.unwrap().accessToken);
 
           return Result.ok(null);
-        })
+        }),
       );
   }
 
   public isAuthenticated(): boolean {
-    return !this.accessToken;
+    return !!this.accessToken;
   }
 
   private setToken(token: string) {

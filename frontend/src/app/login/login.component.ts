@@ -1,23 +1,18 @@
-import {
-  Component,
-  Injectable,
-  ViewChild,
-} from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertComponent } from '../shared/application/components/alert/alert.component';
-import { AlertTypes } from '../shared/application/components/alert/enum/alert-types';
-import { AuthService } from '../shared/application/service/auth/auth.service';
-import { LoginRequestDto } from './model/login-request.dto';
+import { Component, Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { AlertTypes } from "../shared/application/components/alert/enum/alert-types";
+import { AlertService } from "../shared/application/components/alert/service/alert.service";
+import { AuthService } from "../shared/application/service/auth/auth.service";
+import { LoginRequestDto } from "./model/login-request.dto";
 
 @Component({
-  selector: 'app-login',
+  selector: "app-login",
   standalone: false,
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  templateUrl: "./login.component.html",
+  styleUrl: "./login.component.css",
 })
 @Injectable()
 export class LoginComponent {
-  @ViewChild(AlertComponent) alertComponent: AlertComponent;
   public model: LoginRequestDto;
   public submitting: boolean;
   public usernameInformed: boolean;
@@ -25,16 +20,17 @@ export class LoginComponent {
 
   constructor(
     private readonly authenticationService: AuthService,
-    private readonly router: Router
+    private readonly alertService: AlertService,
+    private readonly router: Router,
   ) {
-    this.model = new LoginRequestDto('', '', true);
+    this.model = new LoginRequestDto("", "", true);
     this.submitting = false;
     this.usernameInformed = true;
     this.passwordInformed = true;
   }
 
   ngOnInit() {
-    this.model = new LoginRequestDto('', '', true);
+    this.model = new LoginRequestDto("", "", true);
   }
 
   onSubmit(model: LoginRequestDto) {
@@ -54,25 +50,23 @@ export class LoginComponent {
     this.usernameInformed = true;
     this.submitting = true;
 
-    this.authenticationService
-      .authenticate(this.model)
-      .subscribe((result) => {
-        if (result.isErr) {
-          this.alertComponent.show(
-            8,
-            AlertTypes.DANGER,
-            'An error has occured on authentication'
-          );
-        } else {
-          this.alertComponent.show(
-            8,
-            AlertTypes.SUCCESS,
-            'Successfully logged'
-          );
+    this.authenticationService.authenticate(this.model).subscribe((result) => {
+      if (result.isErr) {
+        this.alertService.push({
+          alertType: AlertTypes.DANGER,
+          message: "An error has occurred on authentication",
+          seconds: 1000,
+        });
+      } else {
+        this.alertService.push({
+          alertType: AlertTypes.SUCCESS,
+          message: "Successfully logged",
+          seconds: 1000,
+        });
 
-          this.router.navigate(['/home']);
-        }
-        this.submitting = false;
-      });
+        this.router.navigate(["/home"]);
+      }
+      this.submitting = false;
+    });
   }
 }

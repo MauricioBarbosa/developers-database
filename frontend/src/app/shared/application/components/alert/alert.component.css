@@ -1,12 +1,11 @@
 .alert-component{
-    margin: 0;
-    padding: 5;
-    display: block;
     position: absolute;
-    top: 12%;
+    width: 50%;
     left: auto;
     right: 2%;
+    top: 12%;
     width: 50%;
+    margin: 10px 0px 10px 0px;
     animation: moveToLeft 0.3s;
     animation-timing-function: ease;
 }

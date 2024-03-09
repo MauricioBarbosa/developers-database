@@ -8,11 +8,12 @@ import { AuthService } from "../../service/auth/auth.service";
 })
 export class HeaderComponent {
   isAuthenticated: boolean;
-  toggledMenu: boolean = false;
+  toggledMenu: boolean;
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.isAuthenticated = this.authService.isAuthenticated();
+    this.toggledMenu = false;
   }
 
   toggleMenu() {
