@@ -14,7 +14,7 @@ export class AuthService {
   private apiUrl: string;
 
   constructor(private readonly httpService: HttpService) {
-    this.accessToken = "";
+    this.accessToken = "asa";
     this.apiUrl = environment.apiUrl;
   }
 

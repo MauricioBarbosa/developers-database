@@ -55,13 +55,13 @@ export class LoginComponent {
         this.alertService.push({
           alertType: AlertTypes.DANGER,
           message: "An error has occurred on authentication",
-          seconds: 1000,
+          seconds: 8,
         });
       } else {
         this.alertService.push({
           alertType: AlertTypes.SUCCESS,
           message: "Successfully logged",
-          seconds: 1000,
+          seconds: 8,
         });
 
         this.router.navigate(["/home"]);

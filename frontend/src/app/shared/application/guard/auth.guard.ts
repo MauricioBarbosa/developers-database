@@ -12,8 +12,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   if (!authService.isAuthenticated()) {
     console.log(alertService);
 
-    console.log("minha micropica");
-
     alertService.push({
       alertType: AlertTypes.DANGER,
       message: `You must login first to acess this route`,
