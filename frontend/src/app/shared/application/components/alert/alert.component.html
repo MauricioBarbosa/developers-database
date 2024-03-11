@@ -1,0 +1,42 @@
+<div *ngFor="let alert of alerts; index as i">
+  <div
+    *ngIf="alert.alertType === 'PRIMARY'"
+    class="alert alert-primary alert-component"
+    role="alert"
+  >
+    {{ alert.message }}
+  </div>
+  <div
+    *ngIf="alert.alertType === 'SECONDARY'"
+    class="alert alert-secondary alert-component"
+    role="alert"
+  >
+    {{ alert.message }}
+  </div>
+  <div
+    *ngIf="alert.alertType === 'SUCCESS'"
+    class="alert alert-success alert-component"
+    role="alert"
+  >
+    {{ alert.message }}
+  </div>
+  <div *ngIf="alert.alertType === 'DANGER'" class="alert alert-danger alert-component" role="alert">
+    {{ alert.message }}
+  </div>
+  <div
+    *ngIf="alert.alertType === 'WARNING'"
+    class="alert alert-warning alert-component"
+    role="alert"
+  >
+    {{ alert.message }}
+  </div>
+  <div *ngIf="alert.alertType === 'INFO'" class="alert alert-info alert-component" role="alert">
+    {{ alert.message }}
+  </div>
+  <div *ngIf="alert.alertType === 'LIGHT'" class="alert alert-light alert-component" role="alert">
+    {{ alert.message }}
+  </div>
+  <div *ngIf="alert.alertType === 'DARK'" class="alert alert-dark alert-component" role="alert">
+    {{ alert.message }}
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<header
+  class="bg-gradient text-white d-flex align-items-center justify-content-center"
+  style="background-color: var(--bs-purple); height: 10vh"
+  *ngIf="!isAuthenticated; else elseBlock"
+>
+  <h6 class="text-center m-0"><b>Developers Database</b></h6>
+</header>
+
+<ng-template #elseBlock>
+  <header
+    class="bg-gradient text-white d-flex align-items-center justify-content-between px-5"
+    style="background-color: var(--bs-purple); height: 10vh"
+  >
+    <h6 class="text-center m-0"><b>Developers Database</b></h6>
+    <nav class="d-flex p-0 m-0" style="width: 23%">
+      <div class="p-0 w-0">
+        <i-bs name="file-person-fill" width="3rem" height="3rem"></i-bs>
+      </div>
+      <div
+        class="d-flex align-items-center justify-content-between ml-4 px-2"
+        style="background-color: #290661; width: 100%; border-radius: 5px"
+      >
+        <b>Logged User</b>
+        <div class="navbar p-0">
+          <button
+            type="button"
+            class="navbar-toggler bg-light px-2 m-0"
+            data-toggle="collapse"
+            data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            (click)="toggleMenu()"
+          >
+            <span class="navbar-toggler-icon" style="width: 20px"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div
+    id="navbarToggleExternalContent"
+    [ngClass]="{ collapse: !toggledMenu, 'navbar-collapse': true }"
+  >
+    <div class="w-25 d-flex flex-column position-absolute top-25 end-0 dropdown-menu">
+      <a class="dropdown-item" href="#">Manage Companies</a>
+      <a class="dropdown-item" href="#">Manage Issues</a>
+      <a class="dropdown-item" href="#">Manage People</a>
+      <a class="dropdown-item" href="#">Manage Projects</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Logout</a>
+    </div>
+  </div>
+</ng-template>
