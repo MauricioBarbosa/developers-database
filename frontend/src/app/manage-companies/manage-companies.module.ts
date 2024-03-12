@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
-import { ManageCompaniesComponent } from "./manage-companies.component";
+import { CompaniesListComponent } from "./companies-list/companies-list.component";
+import { ManageCompaniesRoutingModule } from "./manage-companies-routing.module";
 
 @NgModule({
-  imports: [SharedModule],
-  declarations: [ManageCompaniesComponent],
+  imports: [SharedModule, ManageCompaniesRoutingModule],
+  declarations: [CompaniesListComponent],
 })
 export class ManageCompaniesModule {}
