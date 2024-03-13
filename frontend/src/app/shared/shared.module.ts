@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 import { NgxBootstrapIconsModule, filePersonFill } from "ngx-bootstrap-icons";
 import { AlertComponent } from "./application/components/alert/alert.component";
 import { AlertService } from "./application/components/alert/service/alert.service";
-import { BreadcumbComponent } from "./application/components/breadcumb/breadcumb.component";
+import { BreadcrumbComponent } from "./application/components/breadcrumb/breadcrumb.component";
 import { FooterComponent } from "./application/components/footer/footer.component";
 import { HeaderComponent } from "./application/components/header/header.component";
 import { LoadingComponent } from "./application/components/loading/loading.component";
@@ -24,8 +24,14 @@ import { AngularHttpService } from "./infrastructure/services/http/angular-http.
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
-    BreadcumbComponent,
+    BreadcrumbComponent,
   ],
-  exports: [HeaderComponent, FooterComponent, LoadingComponent, AlertComponent, BreadcumbComponent],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    LoadingComponent,
+    AlertComponent,
+    BreadcrumbComponent,
+  ],
 })
 export class SharedModule {}

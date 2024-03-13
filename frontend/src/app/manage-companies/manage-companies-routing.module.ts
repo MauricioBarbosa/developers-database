@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { CompaniesListComponent } from "./companies-list/companies-list.component";
+import { CompaniesListComponent } from "./pages/companies-list/companies-list.component";
 
 const manageCompaniesRoutes: Routes = [{ path: "", component: CompaniesListComponent }];
 

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { BreadCumbDto } from "../../shared/application/components/breadcumb/dto/breadcumb.dto";
+import { BreadCrumbDto } from "../../../shared/application/components/breadcrumb/dto/breadcrumb.dto";
 
 @Component({
   selector: "app-companies-list",
@@ -7,10 +7,10 @@ import { BreadCumbDto } from "../../shared/application/components/breadcumb/dto/
   styleUrl: "./companies-list.component.css",
 })
 export class CompaniesListComponent {
-  breadcumbs: Array<BreadCumbDto>;
+  breadcrumbs: Array<BreadCrumbDto>;
 
   ngOnInit() {
-    this.breadcumbs = [
+    this.breadcrumbs = [
       {
         active: false,
         label: "Home",
