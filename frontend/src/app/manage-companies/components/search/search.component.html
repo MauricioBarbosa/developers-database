@@ -1,19 +1,37 @@
 <form>
-  <div class="d-flex flex-row mx-3 mt-2" style="width: 88%">
-    <div class="form-group" style="width: 20%; margin-right: 1%">
-      <select class="form-control form-control-sm" id="inputTypeSelect">
-        <option>Name</option>
-      </select>
+  <div class="d-flex flex-column" style="width: 88%">
+    <div class="d-flex flex-row mx-3 mt-2" style="width: 83%">
+      <div class="form-group" style="width: 20%; margin-right: 1%">
+        <select class="form-control form-control-sm" id="inputTypeSelect">
+          <option>Name</option>
+        </select>
+      </div>
+      <div class="form-group" style="width: 80%">
+        <input class="form-control form-control-sm" type="text" name="" id="input1" />
+      </div>
+      <button
+        type="button"
+        class="btn btn-dark mx-2"
+        style="background-color: var(--bs-purple); border: none; padding: 3px 10px 3px 10px"
+      >
+        <i-bs name="plus-circle" width="1rem" height="1rem"></i-bs>
+      </button>
     </div>
-    <div class="form-group" style="width: 80%">
-      <input class="form-control form-control-sm" type="text" name="" id="input1" />
+    <div class="align-self-end d-flex flex-row justify-content-end mt-3 mb-2" style="width: 60%">
+      <button
+        type="button"
+        class="btn btn-dark p-3"
+        style="background-color: var(--bs-purple); border: none; margin: 1%"
+      >
+        Search
+      </button>
+      <button
+        type="button"
+        class="btn btn-dark p-3"
+        style="background-color: var(--bs-purple); border: none; margin: 1%"
+      >
+        Register New Company
+      </button>
     </div>
-    <button
-      type="button"
-      class="btn btn-dark mx-2"
-      style="background-color: var(--bs-purple); border: none; padding: 3px 10px 3px 10px"
-    >
-      <i-bs name="plus-circle" width="1rem" height="1rem"></i-bs>
-    </button>
   </div>
 </form>
