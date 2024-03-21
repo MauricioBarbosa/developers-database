@@ -1,0 +1,8 @@
+.active > .page-link{
+    background-color: var(--bs-purple);
+    border-color: var(--bs-purple);
+}
+
+.pagination {
+    color: var(--bs-purple);
+}

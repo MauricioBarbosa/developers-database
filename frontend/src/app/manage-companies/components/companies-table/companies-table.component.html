@@ -1,45 +1,80 @@
-<table class="table mx-4" style="width: 95%; overflow-y: scroll">
-  <thead>
-    <tr>
-      <th scope="col">Company</th>
-      <th scope="col">Birthday/Age</th>
-      <th scope="col">Nationality</th>
-      <th scope="col">Status</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <div class="d-flex flex-row">
-          <picture>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Cnl3NJNCvdicyO28MFrUWQKi7WOO4Nj1AsUUk5ifBw&s"
-              alt="Company name"
-              class="img-fluid img-thumbnail"
-              style="width: 60px; height: 50px"
-            />
-          </picture>
-          <div class="mx-1">
-            <div><a href="#">Company Name</a></div>
-            <div>Company Sector</div>
+<div class="table-responsive" style="max-height: 45vh">
+  <table class="table mx-4" style="width: 95%">
+    <thead>
+      <tr>
+        <th scope="col">Company</th>
+        <th scope="col">Birthday/Age</th>
+        <th scope="col">Nationality</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let company of companies">
+      <tr>
+        <td>
+          <div class="d-flex flex-row">
+            <picture>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Cnl3NJNCvdicyO28MFrUWQKi7WOO4Nj1AsUUk5ifBw&s"
+                alt="Company name"
+                class="img-fluid img-thumbnail"
+                style="width: 55px; height: 50px"
+              />
+            </picture>
+            <div class="mx-1">
+              <div>
+                <a href="#" style="text-decoration: none">{{ company.name }}</a>
+              </div>
+              <div>{{ company.sector }}</div>
+            </div>
           </div>
-        </div>
-      </td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>mdo</td>
-      <th>
-        <button type="button" class="btn text-warning">
-          <i-bs name="pencil-square" width="1rem" height="1rem"></i-bs>
-        </button>
-      </th>
-      <th>
-        <button type="button" class="btn text-danger">
-          <i-bs name="trash3-fill" width="1rem" height="1rem"></i-bs>
-        </button>
-      </th>
-    </tr>
-  </tbody>
-</table>
+        </td>
+        <td class="align-middle">{{ company.creationDate }}</td>
+        <td class="align-middle">
+          <img
+            src="{{ company.nationality.flagUrl }}"
+            alt="Company name"
+            style="width: 25px; height: 20px"
+          />
+        </td>
+        <td class="align-middle">
+          <span
+            class="badge bg-success"
+            *ngIf="company.status === CompanyStatuses.ACTIVE; else elseBlock"
+            >Active</span
+          >
+        </td>
+        <ng-template #elseBlock>
+          <td>
+            <span class="badge bg-danger">BANKRUPT</span>
+          </td>
+        </ng-template>
+        <td class="align-middle">
+          <button type="button" class="btn text-warning">
+            <i-bs name="pencil-square" width="1rem" height="1rem"></i-bs>
+          </button>
+        </td>
+        <td class="align-middle">
+          <button type="button" class="btn text-danger">
+            <i-bs name="trash3-fill" width="1rem" height="1rem"></i-bs>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="w-100 d-flex align-items-center justify-content-center">
+  <nav aria-label="...">
+    <ul class="pagination pagination-md">
+      <li
+        class="page-item"
+        *ngFor="let i of pages"
+        [class.active]="i === pageActive"
+        aria-current="page"
+      >
+        <a class="page-link" href="#">{{ i }}</a>
+      </li>
+    </ul>
+  </nav>
+</div>
